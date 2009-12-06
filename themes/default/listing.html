@@ -1,25 +1,25 @@
 {% extends "base.html" %}
-{% block title %}{{config.blog_name}}{% endblock %}
 {% block body %}
   {% for post in posts %}
-    <h2><a href="{{post.path}}">{{post.title|escape}}</a></h2>
+    <div class="post-title"><a href="{{post.path}}">{{post.title|escape}}</a></div>
     <p class="post-info">
-      Posted by {{config.author_name}}
+      <span class="date">{{post.published|date:"d.m.Y"}}</span><br />
       {% if post.tags %}
-        | Filed under
+        Filed under:
         {% for tag in post.tag_pairs %}
           <a href="/tag/{{tag.1|escape}}">{{tag.0|escape}}</a>{% if not forloop.last %},{% endif %}
         {% endfor %}
       {% endif %}
     </p>
+    <div class="post">
     {{post.summary}}
-    <p class="postmeta">
-      <a href="{{post.path}}" class="readmore">Read more</a> |
+    <p class="post-meta">
+      <a href="{{post.path}}" class="readmore">Read more</a>
       {% if config.disqus_forum %}
-        <a href="{{post.path}}#disqus_thread" class="readmore">Comments</a> |
+        <a href="{{post.path}}#disqus_thread" class="readmore"> | Comments</a> |
       {% endif %}
-      <span class="date">{{post.published|date:"d F, Y"}}</span>
     </p>
+    </div>
   {% endfor %}
   {% if prev_page %}
     <a id="prev" href="{{prev_page}}">Newer</a>
@@ -42,5 +42,6 @@
     })();
     //]]>
     </script>
+    </div>
   {% endif %}
 {% endblock %}

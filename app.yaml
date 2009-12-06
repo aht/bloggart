@@ -1,5 +1,5 @@
-application: bloggart-demo
-version: live
+application: chickamade
+version: a364d13
 runtime: python
 api_version: 1
 

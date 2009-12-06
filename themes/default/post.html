@@ -1,21 +1,18 @@
 {% extends "base.html" %}
-{% block title %}{{post.title|escape}} - {{config.blog_name}}{% endblock %}
+{% block title %}{{post.title|escape}} // {{config.blog_name}}{% endblock %}
 {% block body %}
-  <h2>{{post.title|escape}}</h2>
+  <div class="post-title">{{post.title|escape}}</div>
     <p class="post-info">
-      Posted by {{config.author_name}}
+    {{post.published|date:"d.m.Y"}}<br />
       {% if post.tags %}
-        | Filed under
+        Filed under:
         {% for tag in post.tag_pairs %}
           <a href="/tag/{{tag.1|escape}}">{{tag.0|escape}}</a>{% if not forloop.last %},{% endif %}
         {% endfor %}
       {% endif %}
     </p>
+  <div class="post">
   {{post.rendered}}
-  <p class="postmeta">
-    <span class="date">{{post.published|date:"d F, Y"}}</span>
-  </p>
-  
   {% if config.disqus_forum %}
     <h3 id="comments">Comments</h3>
     <div id="disqus_thread"></div>
@@ -28,4 +25,5 @@
     <noscript><a href="http://disqus.com/forums/{{config.disqus_forum}}/?url=ref">View the discussion thread.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
   {% endif %}
+  </div>
 {% endblock %}

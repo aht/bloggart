@@ -1,44 +1,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>{% block title %}Bloggart{% endblock %}</title>
+  <title>{% block title %}{{config.blog_name}}{% endblock %}</title>
   {% block style %}
-  <link rel="stylesheet" type="text/css" media="screen" href="/static/default/css/screen.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/static/default/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/static/default/css/prettify.css" />
   {% endblock %}
-  {% if config.highlighting_style %}
-  <link rel="stylesheet" type="text/css" media="screen" href="/static/default/css/pygments_{{config.highlighting_style}}.css" />
-  {% endif %}
   <link rel="alternate" type="application/atom+xml" href="/feeds/atom.xml" />
   {% block head %}{% endblock %}
 </head>
 <body>
-	<div id="header-wrap"><div id="header" class="container_16">						
-		<h1 id="logo-text"><a href="/" title="">{{config.blog_name}}</a></h1>		
-		<p id="intro">{{config.slogan}}</p>
-		<div  id="nav">
-			<ul>
-				<li{% ifequal generator_class "IndexContentGenerator" %} id="current"{% endifequal %}><a href="/">Home</a></li>
-        {% block menu %}{% endblock %}
-			</ul>
-		</div>		
-		<div id="header-image"></div> 
-    <form id="quick-search" action="/search" method="get">
-      <p>
-        <label for="q">Search:</label>
+<div id="header">
+	<h1 id="logo"><a href="/" title="">On <strong>ideas</strong> worth <em>stealing</em></a></h1>
+	<p id="slogan">{{config.slogan}}</p>
+</div>
+<div id="content">
+<div id="sidebar">
+   <h3>Inquiry</h3>
+   <form id="search" action="/search" method="get">
+      <fieldset>
         <input type="hidden" name="cref" value="http://{{config.host}}/cse.xml" />
         <input type="hidden" name="cof" value="FORID:11" />
         <input type="hidden" name="ie" value="UTF-8" />
-        <input class="tbox" type="text" name="q" size="31" />
-        <input class="btn" type="image" name="sa" value="Search" src="/static/default/images/search.gif" alt="Search" />
-      </p>
+        <input type="text" name="q" size=20 />
+      </fieldset>
     </form>
-    <script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=quick-search&lang=en"></script>
-	</div></div>
-	<div id="content-outer"><div id="content-wrapper" class="container_16">
-		<div id="main" class="grid_12">
-      {% block body %}{% endblock %}
-		</div>
-		<div id="left-columns" class="grid_4">
+    <script type="text/javascript" src="/static/default/gcse.js"></script>
       {% for sidebar in config.sidebars %}
         <div class="sidemenu">
           <h3>{{sidebar.0}}</h3>
@@ -49,22 +36,16 @@
           </ul>
         </div>
       {% endfor %}
-		</div>		
-	</div></div>
-	<div id="footer-wrapper" class="container_16">
-		<div id="footer-bottom">
-			<p class="bottom-left">			
-			&nbsp; &copy; {{config.author_name}} &nbsp; &nbsp;
-			Design by : <a href="http://www.styleshout.com/">styleshout</a>												
-			</p>	
-			<p class="bottom-right" >
-				<a href="/">Home</a> |
-        <a href="/feeds/atom.xml">Atom</a> |
-				<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a> | 
-		   	<a href="http://validator.w3.org/check/referer">XHTML</a>
-			</p>
-		</div>	
-	</div>
+</div>
+<div id="main">
+	{% block body %}{% endblock %}
+</div>
+</div>
+<div id="footer">
+	<p>&copy; 2009 {{config.author_name}}</p>	
+</div>
+<script type="text/javascript" src="/static/default/prettify.js"></script>
+<script type="text/javascript">prettyPrint()</script>
 {% if config.analytics_id %}
   <script type="text/javascript">
   var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
