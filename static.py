@@ -118,7 +118,9 @@ class StaticContentHandler(webapp.RequestHandler):
     content = get(path)
     if not content:
       self.error(404)
-      self.response.out.write(utils.render_template('404.html'))
+      from random import choice
+      from haiku import haiku
+      self.response.out.write(utils.render_template('404.html', {'haiku': choice(haiku)}))
       return
 
     serve = True

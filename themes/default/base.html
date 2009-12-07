@@ -42,7 +42,9 @@
 </div>
 </div>
 <div id="footer">
-	<p>&copy; 2009 {{config.author_name}}</p>	
+	{% block footer %}
+	<p>&copy; 2009 {{config.author_name}}</p>
+	{% endblock %}
 </div>
 <script type="text/javascript" src="/static/default/prettify.js"></script>
 <script type="text/javascript">prettyPrint()</script>

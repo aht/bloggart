@@ -187,3 +187,13 @@ em {
 	font-weight: bold;
 	color: #c0c0c0;
 }
+
+.haiku {
+	white-space: pre;
+	font: 24px/1.5 "Comic Sans MS", cursive;
+	text-align: center;
+	padding: 40px 0 50px 0;
+	color: #444;
+	background: #f8f8f8;
+	margin-top: 50px;
+}
