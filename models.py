@@ -24,18 +24,10 @@ class BlogPost(db.Model):
   body_markup = db.StringProperty(choices=set(markup.MARKUP_MAP),
                                   default=DEFAULT_MARKUP)
   body = db.TextProperty(required=True)
-  tags = aetycoon.SetProperty(basestring, indexed=False)
+  tags = db.StringListProperty()
   published = db.DateTimeProperty()
   updated = db.DateTimeProperty(auto_now=True)
   deps = aetycoon.PickleProperty()
-
-  @aetycoon.TransformProperty(tags)
-  def normalized_tags(tags):
-    return list(set(utils.slugify(x.lower()) for x in tags))
-
-  @property
-  def tag_pairs(self):
-    return [(x, utils.slugify(x.lower())) for x in self.tags]
 
   @property
   def rendered(self):
@@ -58,15 +50,7 @@ class BlogPost(db.Model):
     return hashlib.sha1(str(val)).hexdigest()
   
   def publish(self):
-    if not self.path:
-      num = 0
-      content = None
-      while not content:
-        path = utils.format_post_path(self, num)
-        content = static.add(path, '', config.html_mime_type)
-        num += 1
-      self.path = path
-      self.put()
+    static.add(self.path, '', config.html_mime_type)
     if not self.deps:
       self.deps = {}
     for generator_class, deps in self.get_deps():

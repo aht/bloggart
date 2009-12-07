@@ -14,13 +14,6 @@ host = 'blog.onideas.ws'
 # the 'themes' directory, containing templates and static content.
 theme = 'default'
 
-# Defines the URL organization to use for blog postings. Valid substitutions:
-#   slug - the identifier for the post, derived from the title
-#   year - the year the post was published in
-#   month - the month the post was published in
-#   day - the day the post was published in
-post_path_format = '/%(slug)s'
-
 # A nested list of sidebar menus, for convenience. If this isn't versatile
 # enough, you can edit themes/default/base.html instead.
 sidebars = [

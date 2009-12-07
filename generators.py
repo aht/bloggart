@@ -8,7 +8,6 @@ from google.appengine.ext import deferred
 
 import fix_path
 import config
-import markup
 import static
 import utils
 
@@ -165,11 +164,11 @@ class TagsContentGenerator(ListingContentGenerator):
 
   @classmethod
   def get_resource_list(cls, post):
-    return post.normalized_tags
+    return post.tags
 
   @classmethod
   def _filter_query(cls, resource, q):
-    q.filter('normalized_tags =', resource)
+    q.filter('tags =', resource)
 generator_list.append(TagsContentGenerator)
 
 

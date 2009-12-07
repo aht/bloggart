@@ -1,5 +1,5 @@
 application: chickamade
-version: a364d13
+version: a1d940f
 runtime: python
 api_version: 1
 
@@ -10,10 +10,6 @@ handlers:
 
 - url: /_ah/queue/deferred
   script: $PYTHON_LIB/google/appengine/ext/deferred/deferred.py
-  login: admin
-
-- url: /admin/.*
-  script: admin.py
   login: admin
 
 - url: /static/([^/]+)/(.*)

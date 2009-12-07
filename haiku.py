@@ -1,5 +1,5 @@
 haiku = [
-	'The web page you seek\nLies beyond our perception\nBut others await.',
+	'The web page you seek\nLies beyond my perception\nBut others await.',
 	'Pages you are seeking\nFrom your path they are fleeing\nTheir winter has come.',
 	'A truth found, be told\nYou are far from the fold, Go\nCome back yet again.',
 	"Wind catches lily\nScatt'ring petals to the wind:\nYour page is not found.",
