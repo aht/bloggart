@@ -115,6 +115,7 @@ class StaticContentHandler(webapp.RequestHandler):
       self.response.set_status(304)
   
   def get(self, path):
+    path = path.replace('%3A', ':')
     content = get(path)
     if not content:
       self.error(404)
