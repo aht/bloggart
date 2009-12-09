@@ -26,6 +26,7 @@ sidebars = [
     ('Nick Johnson', 'http://blog.notdot.net/'),
     ('Paul Graham', 'http://paulgraham.com/articles.html'),
     ('research!rsc', 'http://research.swtch.com/'),
+    ('xkcd', 'http://www.xkcd.com/'),
   ]),
 ]
 
