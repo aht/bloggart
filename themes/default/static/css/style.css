@@ -161,18 +161,26 @@ p {
 }
 
 code {
-	font-family: Verdana;
+	font-family: Verdana, Inconsolata, monospace;
 	font-size: 14px;
 	white-space: pre;
-	padding: 5px 5px 10px 20px;
+	padding: 5px 5px 5px 15px;
+	border-top: solid 1px #eee;
 	border-left: dotted 5px #666;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 10px 0 10px 5px;
 	display: block;
 }
 
-pre {
+code.long {
+	padding: 15px 5px 10px 15px;
+}
+
+var {
 	font-family: Inconsolata, monospace;
+}
+
+pre {
+	font-family: "Comic Sans MS", cursive;
 	font-size: 14px;
 	padding: 3px 0px 3px 15px;
 	border-left: dotted 5px #666;
@@ -197,6 +205,18 @@ em {
 strong {
 	font-weight: bold;
 	color: #444;
+}
+
+ul {
+	margin-left: 25px;
+}
+
+ul li {
+	list-style-type: square;
+}
+
+ol li {
+	list-style-type: decimal;
 }
 
 .haiku {
