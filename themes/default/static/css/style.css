@@ -65,10 +65,6 @@ body {
 	line-height: 1;
 }
 
-#logo a {
-	color: #666;
-}
-
 #slogan {
 	padding-left: 100px;
 	color: #888;
@@ -88,22 +84,6 @@ body {
 	float: right;
 	position: relative;
 	width: 220px;
-}
-
-#sidebar a, .post-info a, .post a {
-	color: #4169e1;
-}
-
-#sidebar a:visited, .post-info a:visited, .post a:visited {
-	color: #5f9ea0;
-}
-
-#sidebar a:hover, .post-info a:hover, .post a:hover {
-	color: #00f;
-}
-
-#sidebar a:active, .post-info a:active, .post a:active {
-	border-bottom: dotted 1px #000;
 }
 
 #search {
@@ -147,53 +127,37 @@ body {
 	font-weight: bold;
 }
 
-p {
-	margin-bottom: 10px;
-}
-
-.postscript {
-	margin-top: 20px;
-}
-
-code {
-	font-family: Verdana, Inconsolata, monospace;
-	font-size: 14px;
-	white-space: pre;
-	padding: 5px 5px 5px 15px;
-	border-top: solid 1px #eee;
-	border-left: dotted 5px #666;
-	margin: 10px 0 10px 5px;
-	display: block;
-}
-
-code.long {
-	padding: 15px 5px 10px 15px;
-}
-
-var {
-	font-family: Inconsolata, monospace;
-}
-
-pre {
-	font-family: "Comic Sans MS", cursive;
-	font-size: 14px;
-	padding: 3px 0px 3px 15px;
-	border-left: dotted 5px #666;
-	margin-left: 20px;
-	margin-bottom: 10px;
-}
-
 #footer {
 	display: inline;
 	float: left;
 	position: relative;
 	color: #888;
-	font-size: 14px;
+	font-size: 87.5%;
 	margin: 15px 0 15px 0;
 }
 
 a {
 	text-decoration: none;
+}
+
+#logo a {
+	color: #666;
+}
+
+#sidebar a, .post-info a, .post a {
+	color: #4169e1;
+}
+
+#sidebar a:visited, .post-info a:visited, .post a:visited {
+	color: #5f9ea0;
+}
+
+#sidebar a:hover, .post-info a:hover, .post a:hover {
+	color: #00f;
+}
+
+#sidebar a:active, .post-info a:active, .post a:active {
+	border-bottom: dotted 1px #000;
 }
 
 h2 {
@@ -212,7 +176,6 @@ h3 {
 
 em {
 	font-style: italic;
-	color: #666;
 }
 
 strong {
@@ -220,16 +183,50 @@ strong {
 	color: #444;
 }
 
-ul {
+#main ul {
 	margin-left: 25px;
 }
 
-ul li {
+#main ul li {
 	list-style-type: square;
 }
 
 ol li {
 	list-style-type: decimal;
+}
+
+p {
+	margin-bottom: 10px;
+}
+
+.postscript {
+	margin-top: 20px;
+}
+
+blockquote {
+	font-family: "Comic Sans MS", cursive;
+	font-size: 87.5%;
+	padding: 3px 0px 3px 15px;
+	border-left: dotted 5px #666;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+pre.prettyprint {
+	font-family: Verdana, Inconsolata, monospace;
+	font-size: 87.5%;
+	padding: 5px 5px 5px 15px;
+	border-top: solid 1px #eee;
+	border-left: dotted 5px #666;
+	margin: 10px 0 10px 5px;
+}
+
+pre.long {
+	padding: 10px 5px 10px 15px;
+}
+
+code {
+	font-family: Inconsolata, monospace;
 }
 
 .haiku {
@@ -242,3 +239,40 @@ ol li {
 	margin-top: 50px;
 }
 
+@media print {
+	html {
+		font-family: serif;
+		font-size: 12px;
+	}
+	#sidebar, #comments, #disqus_thread {
+		display: none;
+	}
+}
+
+
+/* Pretty printing styles. Used with prettify.js. */
+
+.str { color: #080; }
+.kwd { color: #008; }
+.com { color: #800; }
+.typ { color: #606; }
+.lit { color: #066; }
+.pun { color: #660; }
+.pln { color: #000; }
+.tag { color: #008; }
+.atn { color: #606; }
+.atv { color: #080; }
+.dec { color: #606; }
+
+@media print {
+  .str { color: #060; }
+  .kwd { color: #006; font-weight: bold; }
+  .com { color: #600; font-style: italic; }
+  .typ { color: #404; font-weight: bold; }
+  .lit { color: #044; }
+  .pun { color: #440; }
+  .pln { color: #000; }
+  .tag { color: #006; font-weight: bold; }
+  .atn { color: #404; }
+  .atv { color: #060; }
+}
