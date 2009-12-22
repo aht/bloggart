@@ -106,12 +106,12 @@ body {
 }
 
 .post-info {
-	font-size: 14px;
+	font-size: 87.5%;
 	color: #888888;
 }
 
 .post-meta {
-	font-size: 14px;
+	font-size: 87.5%;
 }
 
 #comments {
@@ -219,6 +219,7 @@ pre.prettyprint {
 }
 
 pre.long {
+	margin: 15px 0 15px 5px;
 	padding: 10px 5px 10px 15px;
 }
 
