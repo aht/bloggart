@@ -138,25 +138,22 @@ body {
 
 a {
 	text-decoration: none;
+	color: #4169e1;
+}
+
+a:visited {
+	color: #5f9ea0;
+}
+
+a:hover {
+	color: #00f;
 }
 
 #logo a {
 	color: #666;
 }
 
-#sidebar a, .post-info a, .post a {
-	color: #4169e1;
-}
-
-#sidebar a:visited, .post-info a:visited, .post a:visited {
-	color: #5f9ea0;
-}
-
-#sidebar a:hover, .post-info a:hover, .post a:hover {
-	color: #00f;
-}
-
-#sidebar a:active, .post-info a:active, .post a:active {
+#sidebar a:active, .post-info a:active, .post a:active, .post-meta a:active {
 	border-bottom: dotted 1px #000;
 }
 
@@ -166,7 +163,7 @@ h2 {
 	font-size: 125%;
 }
 
-h2 a {
+h2 a, h2 a:visited {
 	color: #000;
 }
 

@@ -12,7 +12,9 @@
         {% endfor %}
       {% endif %}
     </p>
+    <div class="post">
     {{post.summary}}
+    </div>
     <p class="post-meta">
       <a href="{{post.path}}" class="readmore">Read more</a>
       {% if config.disqus_forum %}
