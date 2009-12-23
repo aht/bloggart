@@ -1,5 +1,7 @@
 import datetime
 import hashlib
+import logging
+import os
 
 from google.appengine.api import memcache
 from google.appengine.api.labs import taskqueue
@@ -16,6 +18,11 @@ import utils
 
 
 HTTP_DATE_FMT = "%a, %d %b %Y %H:%M:%S GMT"
+
+
+# Log a message each time this module get loaded.
+logging.info('Loading %s, app version = %s',
+             os.path.basename(__file__), os.getenv('CURRENT_VERSION_ID'))
 
 
 class StaticContent(db.Model):
