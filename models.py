@@ -25,8 +25,8 @@ class BlogPost(db.Model):
                                   default=DEFAULT_MARKUP)
   body = db.TextProperty(required=True)
   tags = db.StringListProperty()
-  published = db.DateTimeProperty()
-  updated = db.DateTimeProperty(auto_now=True)
+  published = db.DateTimeProperty(auto_now_add=True)
+  updated = db.DateTimeProperty(auto_now_add=True)
   deps = aetycoon.PickleProperty()
 
   @property
@@ -41,7 +41,7 @@ class BlogPost(db.Model):
 
   @property
   def hash(self):
-    val = (self.title, self.body, self.tags, self.published)
+    val = (self.title, self.body)
     return hashlib.sha1(str(val)).hexdigest()
 
   @property
