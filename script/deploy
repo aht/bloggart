@@ -1,0 +1,11 @@
+#!/usr/bin/env rc
+
+app=/home/aht/src/bloggart
+
+head=`{cat $app/.git/refs/heads/onideas}
+
+sed -i 's/^version: .*/version: '$head'/' $app/app.yaml
+
+appcfg.py -e anh.hai.trinh@gmail.com update $app
+
+sed -i 's/^version: .*/version: live/' $app/app.yaml
