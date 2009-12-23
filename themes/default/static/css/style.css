@@ -163,7 +163,7 @@ h2 {
 	font-size: 125%;
 }
 
-h2 a, h2 a:visited {
+h2 a, h2 a:visited, h2 a:hover {
 	color: #000;
 }
 
