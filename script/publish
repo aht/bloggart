@@ -54,7 +54,6 @@ post = models.BlogPost(
 		title=title,
 		body=body,
 		tags=tags,
-		published=datetime.datetime.now()
 	)
 path = utils.format_post_path(post, 0)
 
@@ -62,8 +61,10 @@ if not static.add(path, '', config.html_mime_type):
 	if forced:
 		post = models.BlogPost.gql('WHERE path = :1', path).get()
 		post.title = title
-		post.body = body
 		post.tags = tags
+		if (post.body != body):
+			post.updated = datetime.datetime.now()
+		post.body = body
 	else:
 		sys.exit("error: content exists on path %s, use -f to force update" % path)
 
