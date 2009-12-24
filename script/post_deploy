@@ -13,7 +13,6 @@ Options:
 """
 
 import sys
-import subprocess
 
 import remote
 
