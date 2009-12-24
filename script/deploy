@@ -6,6 +6,15 @@ head=`{cat $app/.git/refs/heads/onideas}
 
 sed -i 's/^version: .*/version: '$head'/' $app/app.yaml
 
-appcfg.py -e anh.hai.trinh@gmail.com update $app
+fn sigexit {
+	sed -i 's/^version: .*/version: live/' $app/app.yaml
+}
 
-sed -i 's/^version: .*/version: live/' $app/app.yaml
+`{
+	cd $app
+	git checkout onideas
+} || exit 1
+
+appcfg.py -e anh.hai.trinh@gmail.com update $app \
+	&& $app/script/post_deploy -v $head \
+	|| exit 1
