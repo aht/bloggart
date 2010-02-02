@@ -203,6 +203,7 @@ p {
 blockquote {
 	font-family: "Comic Sans MS", cursive;
 	font-size: 87.5%;
+	line-height: 1.25;
 	padding: 3px 0px 3px 15px;
 	border-left: dotted 5px #666;
 	margin-left: 20px;
