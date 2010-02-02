@@ -1,4 +1,4 @@
-#!/usr/bin/env rc
+#!/usr/local/plan9/bin/rc
 
 app=/home/aht/src/bloggart
 
@@ -10,11 +10,11 @@ fn sigexit {
 	sed -i 's/^version: .*/version: live/' $app/app.yaml
 }
 
-`{
+{
 	cd $app
 	git checkout onideas
 } || exit 1
 
-appcfg.py -e anh.hai.trinh@gmail.com update $app \
+/usr/local/google_appengine/appcfg.py -e anh.hai.trinh@gmail.com update $app \
 	&& $app/script/post_deploy -v $head \
 	|| exit 1
