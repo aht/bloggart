@@ -110,6 +110,15 @@ body {
 	color: #888888;
 }
 
+.post {
+	font-family: Verdana, sans-serif;
+	font-size: 14px;
+}
+
+.post img {
+	margin: 20px 0 20px 0;
+}
+
 .post-meta {
 	font-size: 87.5%;
 }
@@ -177,7 +186,7 @@ em {
 
 strong {
 	font-weight: bold;
-	color: #444;
+	color: #000;
 }
 
 #main ul {
@@ -190,6 +199,10 @@ strong {
 
 ol li {
 	list-style-type: decimal;
+}
+
+li {
+	margin-bottom: 5px;
 }
 
 p {
@@ -240,16 +253,18 @@ code {
 
 @media print {
 	html {
-		font-family: serif;
-		font-size: 12px;
+		font-size: 12px !important;
+	}
+	.post {
+		font-family: serif !important;
 	}
 	#sidebar, #comments, #disqus_thread {
-		display: none;
+		display: none !important;
 	}
 }
 
 
-/* Pretty printing styles. Used with prettify.js. */
+/* Used with prettify.js. */
 
 .str { color: #080; }
 .kwd { color: #008; }
