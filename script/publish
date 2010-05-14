@@ -11,9 +11,10 @@ By default, requests are made to {APPID}.appspot.com. The script will fail if
 content already exists on the given path.
 
 Options:
-	  -l    make requests to localhost:8080
-    -t    use the supplied tags, which should be given as a comma-separated string
-	  -f    force update
+	-l    make requests to localhost:8080
+	-t    use the supplied tags, which should be given as a comma-separated string
+	-f    force update
+	-m	update modification time (also modifying the RSS feed)
 """
 
 import BeautifulSoup
@@ -26,16 +27,19 @@ import remote
 
 host = None
 forced = False
+mtime = False
 tags = []
 
-opts, args = getopt.getopt(sys.argv[1:], 'lt:f')
+opts, args = getopt.getopt(sys.argv[1:], 'lt:fm')
 for o, v in opts:
 	if o == '-l':
 		host = 'localhost:8080'
-	elif o == '-t':
-		tags = v.split(',')
 	elif o == '-f':
 		forced = True
+	elif o == '-m':
+		mtime = True
+	elif o == '-t':
+		tags = v.split(',')
 filename = args[0]
 
 remote.attach(host)
@@ -55,10 +59,11 @@ post = models.BlogPost.gql('WHERE path = :1', path).get()
 if post:
 	if forced:
 		post.title = unicode(soup.title.string)
-		post.tags = tags
-		if post.body != body:
+		if tags:
+			post.tags = tags
+		post.body = body
+		if mtime:
 			post.updated = datetime.datetime.now()
-			post.body = body
 	else:
 		sys.exit("error: content exists on path %s, use -f to force write" % path)
 else:
