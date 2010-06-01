@@ -5,7 +5,7 @@ blog_name = 'On ideas worth stealing'
 slogan = "A thief's perspective"
 
 # Your name (used for copyright info)
-author_name = 'Anh Hai Trinh'
+author_name = 'Hai-Anh Trinh'
 
 # The hostname this site will primarially serve off (used for Atom feeds)
 host = 'blog.onideas.ws'

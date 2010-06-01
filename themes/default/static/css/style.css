@@ -44,7 +44,7 @@ blockquote, q {
 html {
 	font-family: Arial, "Helvetica Neue", sans-serif;
 	font-size: 16px;
-	line-height: 1.15;
+	line-height: 1.5;
 }
 
 body {
@@ -69,6 +69,7 @@ body {
 	padding-left: 100px;
 	color: #888;
 	font-size: 150%;
+	line-height: 1.5;
 }
 
 #main {
@@ -116,7 +117,8 @@ body {
 }
 
 .post img {
-	margin: 20px 0 20px 0;
+	width: 480px;
+	margin: 5px 0 15px 0;
 }
 
 .post-meta {
@@ -214,9 +216,9 @@ p {
 }
 
 blockquote {
-	font-family: "Comic Sans MS", cursive;
+	font-family: "Comic Sans MS";
 	font-size: 87.5%;
-	line-height: 1.25;
+	line-height: 1.5;
 	padding: 3px 0px 3px 15px;
 	border-left: dotted 5px #666;
 	margin-left: 20px;
@@ -226,6 +228,7 @@ blockquote {
 pre.prettyprint {
 	font-family: Verdana, Inconsolata, monospace;
 	font-size: 87.5%;
+	line-height: 1.5;
 	padding: 5px 5px 5px 15px;
 	border-top: solid 1px #eee;
 	border-left: dotted 5px #666;
@@ -279,14 +282,14 @@ code {
 .dec { color: #606; }
 
 @media print {
-  .str { color: #060; }
-  .kwd { color: #006; font-weight: bold; }
-  .com { color: #600; font-style: italic; }
-  .typ { color: #404; font-weight: bold; }
-  .lit { color: #044; }
-  .pun { color: #440; }
-  .pln { color: #000; }
-  .tag { color: #006; font-weight: bold; }
-  .atn { color: #404; }
-  .atv { color: #060; }
+	.str { color: #060; }
+	.kwd { color: #006; font-weight: bold; }
+	.com { color: #600; font-style: italic; }
+	.typ { color: #404; font-weight: bold; }
+	.lit { color: #044; }
+	.pun { color: #440; }
+	.pln { color: #000; }
+	.tag { color: #006; font-weight: bold; }
+	.atn { color: #404; }
+	.atv { color: #060; }
 }
