@@ -14,7 +14,7 @@ Options:
 	-l    make requests to localhost:8080
 	-t    use the supplied tags, which should be given as a comma-separated string
 	-f    force update
-	-m	update modification time (also modifying the RSS feed)
+	-m    update modification time (also modifying the RSS feed)
 """
 
 import BeautifulSoup

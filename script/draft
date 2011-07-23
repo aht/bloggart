@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 """
 Post a single static page at /draft/slug, where the title and body of the page

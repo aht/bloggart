@@ -1,11 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import getpass
 import os
 import sys
 
 ## Application specific
-SDK_DIR = '/usr/local/google_appengine'
+SDK_DIR = os.environ.get('GAE', '/usr/local/google_appengine')
 APP_DIR = '/home/aht/src/bloggart'
 APPID = 'chickamade'
 EMAIL = 'anh.hai.trinh@gmail.com'
@@ -14,11 +14,13 @@ REMOTE_API_PATH = '/remote_api'
 
 ## Extra paths to be inserted into sys.path,
 ## including the SDK, it's libraries, your APPDIR, and APPDIR/lib
+
+_SDK_LIB_DIR = os.path.join(SDK_DIR, 'lib')
+_SDK_LIB_SUBDIRS = [ os.path.join(_SDK_LIB_DIR, name) for name in os.listdir(_SDK_LIB_DIR) if os.path.isdir(os.path.join(_SDK_LIB_DIR, name))]
+
 EXTRA_PATHS = [
 	SDK_DIR,
-	os.path.join(SDK_DIR, 'lib', 'antlr3'),
-	os.path.join(SDK_DIR, 'lib', 'django'),
-	os.path.join(SDK_DIR, 'lib', 'webob'),
+] + _SDK_LIB_SUBDIRS + [
 	os.path.join(SDK_DIR, 'lib', 'yaml', 'lib'),
 	APP_DIR,
 	os.path.join(APP_DIR, 'lib'),
