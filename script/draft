@@ -7,6 +7,7 @@ is extracted from the HTML markup of the given file.
 Usage: draft [-l] filepath
 
 By default, requests are made to {APPID}.appspot.com.
+The script will print out the URL of the draft page if success.
 
 Options:
     -l    make requests to to localhost:8080
@@ -47,4 +48,3 @@ rendered = utils.render_template("draft.html", {'post': post})
 static.set(post.path, rendered, config.html_mime_type, indexed=False)
 
 print 'http://' + (host or (remote.APPID + '.appspot.com')) + post.path
-

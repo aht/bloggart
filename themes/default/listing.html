@@ -9,9 +9,9 @@
     <p class="post-info">
       <span class="date">{{post.published|date:"d.m.Y"}}</span><br />
       {% if post.tags %}
-        Filed under:
-        {% for tag in post.tags %}
-          <a href="/tag/{{tag|escape}}">{{tag|escape}}</a>{% if not forloop.last %},{% endif %}
+        | Filed under
+        {% for tag in post.tag_pairs %}
+          <a href="{{config.url_prefix}}/tag/{{tag.1|escape}}">{{tag.0|escape}}</a>{% if not forloop.last %},{% endif %}
         {% endfor %}
       {% endif %}
     </p>
@@ -27,10 +27,8 @@
     </div>
   {% endfor %}
   {% if prev_page %}
-    <a id="prev" href="{{prev_page}}">Newer</a>
   {% endif %}
   {% if next_page %}
-    <a id="next" href="{{next_page}}">Older</a>
   {% endif %}
   {% if config.disqus_forum %}
     <script type="text/javascript">

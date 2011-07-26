@@ -13,10 +13,9 @@ Options:
 """
 
 import sys
-
 import remote
 
-if len(sys.argv) == 2 and sys.argv[1] == '-d':
+if len(sys.argv) == 2 and sys.argv[1] == '-l':
 		host = 'localhost:8080'
 elif len(sys.argv) == 3 and sys.argv[1] == '-v':
 		host = sys.argv[2] + '.latest.' + remote.APPID + '.appspot.com'
