@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+
+"""
+Tag or retag a post.
+
+Usage: tag [-l] path tags...
+
+By default, requests are made to {APPID}.appspot.com.
+
+Options:
+	-l    make requests to localhost:8080
+"""
+
+import BeautifulSoup
+import datetime
+import getopt
+import os
+import sys
+
+import remote
+
+host = None
+forced = False
+mtime = False
+tags = []
+
+opts, args = getopt.getopt(sys.argv[1:], 'l')
+path = args[0]
+tags = args[1:]
+for o, v in opts:
+	if o == '-l':
+		host = 'localhost:8080'
+
+remote.attach(host)
+
+from google.appengine.api import memcache
+
+import models
+import static
+
+
+post = models.BlogPost.gql('WHERE path = :1', path).get()
+if post:
+	post.tags = tags
+else:
+	sys.exit("path does not exist")
+
+post.put()
+post.publish()
