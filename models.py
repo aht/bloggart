@@ -61,6 +61,14 @@ class BlogPost(db.Model):
   def updated_tz(self):
     return utils.tz_field(self.updated)
 
+  @aetycoon.TransformProperty(tags)
+  def normalized_tags(tags):
+    return list(set(utils.slugify(x.lower()) for x in tags))
+
+  @property
+  def tag_pairs(self):
+    return [(x, utils.slugify(x.lower())) for x in self.tags]
+
   @property
   def rendered(self):
     """Returns the rendered body."""
