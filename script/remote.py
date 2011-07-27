@@ -7,18 +7,20 @@ import sys
 ## Application specific
 SDK_DIR = '/usr/local/google_appengine'
 APP_DIR = '/home/aht/src/bloggart'
-APPID = 'bloggart-demo'
+APP_ID = 'bloggart-demo'
 EMAIL = 'my.email@host.dom'
 
 REMOTE_API_PATH = '/remote_api'
 
 ## Extra paths to be inserted into sys.path,
 ## including the SDK, it's libraries, your APPDIR, and APPDIR/lib
+
+_SDK_LIB_DIR = os.path.join(SDK_DIR, 'lib')
+_SDK_LIB_SUBDIRS = [ os.path.join(_SDK_LIB_DIR, name) for name in os.listdir(_SDK_LIB_DIR) if os.path.isdir(os.path.join(_SDK_LIB_DIR, name))]
+
 EXTRA_PATHS = [
 	SDK_DIR,
-	os.path.join(SDK_DIR, 'lib', 'antlr3'),
-	os.path.join(SDK_DIR, 'lib', 'django'),
-	os.path.join(SDK_DIR, 'lib', 'webob'),
+] + _SDK_LIB_SUBDIRS + [
 	os.path.join(SDK_DIR, 'lib', 'yaml', 'lib'),
 	APP_DIR,
 	os.path.join(APP_DIR, 'lib'),
@@ -33,7 +35,10 @@ def attach(host=None):
 			return ('foo', 'bar')
 		else:
 			return (EMAIL, getpass.getpass())
-	remote_api_stub.ConfigureRemoteApi(APPID, REMOTE_API_PATH, auth_func, host)
+	app_id = APP_ID
+	if host and host.startswith('localhost'):
+		app_id = 'dev~'+APP_ID
+	remote_api_stub.ConfigureRemoteApi(app_id=app_id, path=REMOTE_API_PATH, auth_func=auth_func, servername=host)
 	remote_api_stub.MaybeInvokeAuthentication()
 	os.environ['SERVER_SOFTWARE'] = 'Development (remote_api)/1.0'
 
@@ -66,7 +71,7 @@ if __name__ == '__main__':
 		import atexit
 		atexit.register(lambda: readline.write_history_file(HISTORY_PATH))
 
-	sys.ps1 = '%s <-- ' % (host or APPID)
+	sys.ps1 = '%s <-- ' % (host or APP_ID)
 
 	import code
 	code.interact(banner=BANNER, local=globals())
