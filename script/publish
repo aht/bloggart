@@ -68,7 +68,6 @@ else:
 			published=datetime.datetime.now()
 		)
 
-static.get(path).delete()
 post.put()
 post.publish()
 
