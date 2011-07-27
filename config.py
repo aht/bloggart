@@ -12,7 +12,7 @@ host = 'blog.onideas.ws'
 
 # Selects the theme to use. Theme names correspond to directories under
 # the 'themes' directory, containing templates and static content.
-theme = 'default'
+theme = 'onideas'
 
 # List of page templates
 page_templates = {
