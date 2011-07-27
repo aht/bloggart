@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{post.title|escape}} // {{config.blog_name}}{% endblock %}
+{% block body %}
+  <h2>{{post.title|escape}}</h2>
+    <p class="post-info">
+    {{post.published|date:"d.m.Y"}}<br />
+      {% if post.tags %}
+        Filed under:
+        {% for tag in post.tags %}
+          <a href="/tag/{{tag|escape}}">{{tag|escape}}</a>{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      {% endif %}
+    </p>
+  <div class="post">
+  {{post.rendered}}
+  </div>
+{% endblock %}

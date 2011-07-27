@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>{% block title %}{{config.blog_name}}{% endblock %}</title>
+  {% block style %}
+  <link rel="stylesheet" type="text/css" href="/static/default/css/style.css" />
+  {% endblock %}
+  {% if config.highlighting_style %}
+  <link rel="stylesheet" type="text/css" media="screen" href="{{config.url_prefix}}/static/{{config.theme}}/css/pygments_{{config.highlighting_style}}.css" />
+  {% endif %}
+  <link rel="alternate" type="application/atom+xml" 
+	href="{% if config.feed_proxy %}{{ config.feed_proxy }}{% else %}{{config.url_prefix}}/feeds/atom.xml{% endif %}" />
+  <link rel="SHORTCUT ICON" href="{{config.url_prefix}}/static/{{config.theme}}/favicon.ico"/>
+  {% if config.rel_me %}
+  <link rel="me" href="{{config.rel_me}}" />
+  {% endif %}
+
+  {% if config.google_friends_id %}
+  <!-- Include the Google Friend Connect javascript library. -->
+  <script type="text/javascript" src="http://www.google.com/friendconnect/script/friendconnect.js"></script>
+  {% endif %}
+
+  {% block head %}{% endblock %}
+</head>
+<body>
+<div id="header">
+	<h1 id="logo"><a href="/" title="Homepage">On <span style="color: gold">ideas</span> worth <span style="color: silver">stealing</span></a></h1>
+	<p id="slogan">{{config.slogan}}</p>
+</div>
+<div id="content">
+<div id="sidebar">
+   <h3>Inquiry</h3>
+   <form id="search" action="/search" method="get">
+      <fieldset>
+        <input type="hidden" name="cref" value="http://{{config.host}}/cse.xml" />
+        <input type="hidden" name="cof" value="FORID:11" />
+        <input type="hidden" name="ie" value="UTF-8" />
+        <input type="text" name="q" size=20 />
+      </fieldset>
+   </form>
+    <script type="text/javascript" src="/static/default/gcse.js"></script>
+      {% for sidebar in config.sidebars %}
+        <div class="sidemenu">
+          <h3>{{sidebar.0}}</h3>
+          <ul>
+            {% for entry in sidebar.1 %}
+              <li><a href="{{entry.1}}">{{entry.0}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+</div>
+<div id="main">
+	{% block body %}{% endblock %}
+</div>
+</div>
+<div id="footer">
+	{% block footer %}
+	<p>&copy; 2010 {{config.author_name}}</p>
+	{% endblock %}
+</div>
+<script type="text/javascript" src="/static/default/prettify.js"></script>
+<script type="text/javascript">
+  window.onload = prettyPrint;
+</script>
+{% if config.analytics_id and not devel and not is_admin %}
+  <script type="text/javascript">
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+  </script>
+  <script type="text/javascript">
+  try {
+  var pageTracker = _gat._getTracker("{{config.analytics_id}}");
+  pageTracker._trackPageview();
+  } catch(err) {}</script>
+{% endif %}
+{% block endbody %}{% endblock %}
+</body>
+</html>
