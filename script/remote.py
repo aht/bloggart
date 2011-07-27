@@ -7,7 +7,7 @@ import sys
 ## Application specific
 SDK_DIR = os.environ.get('GAE', '/usr/local/google_appengine')
 APP_DIR = os.path.expanduser('~/Dropbox/src/bloggart')
-APPID = 'chickamade'
+APP_ID = 'chickamade'
 EMAIL = 'anh.hai.trinh@gmail.com'
 
 REMOTE_API_PATH = '/remote_api'
@@ -35,7 +35,10 @@ def attach(host=None):
 			return ('foo', 'bar')
 		else:
 			return (EMAIL, getpass.getpass())
-	remote_api_stub.ConfigureRemoteApi(APPID, REMOTE_API_PATH, auth_func, host)
+	app_id = APP_ID
+	if host and host.startswith('localhost'):
+		app_id = 'dev~'+APP_ID
+	remote_api_stub.ConfigureRemoteApi(app_id=app_id, path=REMOTE_API_PATH, auth_func=auth_func, servername=host)
 	remote_api_stub.MaybeInvokeAuthentication()
 	os.environ['SERVER_SOFTWARE'] = 'Development (remote_api)/1.0'
 
@@ -68,7 +71,7 @@ if __name__ == '__main__':
 		import atexit
 		atexit.register(lambda: readline.write_history_file(HISTORY_PATH))
 
-	sys.ps1 = '%s <-- ' % (host or APPID)
+	sys.ps1 = '%s <-- ' % (host or APP_ID)
 
 	import code
 	code.interact(banner=BANNER, local=globals())
