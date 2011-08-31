@@ -20,7 +20,7 @@ import remote
 if len(sys.argv) == 2 and sys.argv[1] == '-l':
 		host = 'localhost:8080'
 elif len(sys.argv) == 3 and sys.argv[1] == '-v':
-		host = sys.argv[2] + '.latest.' + remote.APPID + '.appspot.com'
+		host = sys.argv[2] + '.latest.' + remote.APP_ID + '.appspot.com'
 else:
 	host = None
 
