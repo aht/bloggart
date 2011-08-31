@@ -11,10 +11,7 @@ Options:
 	-l    make requests to localhost:8080
 """
 
-import BeautifulSoup
-import datetime
 import getopt
-import os
 import sys
 
 if len(sys.argv) < 3:
@@ -25,6 +22,9 @@ if len(sys.argv) < 3:
 opts, args = getopt.getopt(sys.argv[1:], 'l')
 path = args[0]
 tags = set(map(unicode, args[1:]))
+sys.stderr.write("tagging path %s with: %s\n" % (path, ", ".join(tags)))
+sys.stderr.flush()
+
 host = None
 for o, v in opts:
 	if o == '-l':
@@ -40,7 +40,7 @@ post = models.BlogPost.gql('WHERE path = :1', path).get()
 if post:
 	post.tags = set(tags)
 else:
-	sys.exit("path does not exist")
+	sys.exit("no post exist at %s" % path)
 
 post.put()
 post.publish()
