@@ -55,7 +55,7 @@ if post:
 	if forced:
 		post.title = unicode(soup.title.string)
 		if tags:
-			post.tags = tags
+			post.tags = set(tags)
 		post.body = body
 	else:
 		sys.exit("error: content exists on path %s, use -f to force write" % path)
