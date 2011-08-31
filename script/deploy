@@ -1,6 +1,6 @@
-#!/usr/local/plan9/bin/rc
+#!/usr/bin/env rc
 
-app=/home/aht/src/bloggart
+app=$home/Dropbox/src/bloggart
 
 head=`{cat $app/.git/refs/heads/onideas}
 
