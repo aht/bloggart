@@ -6,7 +6,7 @@ import sys
 
 ## Application specific
 SDK_DIR = '/usr/local/google_appengine'
-APP_DIR = '/home/aht/src/bloggart'
+APP_DIR = os.path.expanduser('~/src/bloggart')
 APP_ID = 'bloggart-demo'
 EMAIL = 'my.email@host.dom'
 
