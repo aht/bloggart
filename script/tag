@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+"""
+Tag or retag a post.
+
+Usage: tag [-l] path tags...
+
+By default, requests are made to {APPID}.appspot.com.
+
+Options:
+	-l    make requests to localhost:8080
+"""
+
+import getopt
+import sys
+
+if len(sys.argv) < 3:
+    print __doc__
+    sys.exit(-1)
+
+
+opts, args = getopt.getopt(sys.argv[1:], 'l')
+path = args[0]
+tags = set(map(unicode, args[1:]))
+host = None
+for o, v in opts:
+	if o == '-l':
+		host = 'localhost:8080'
+
+import remote
+remote.attach(host)
+
+import models
+import static
+
+post = models.BlogPost.gql('WHERE path = :1', path).get()
+if post:
+	post.tags = set(tags)
+else:
+	sys.exit("path does not exist")
+
+post.put()
+post.publish()
