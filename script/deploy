@@ -1,8 +1,10 @@
 #!/usr/bin/env rc
 
 app=$home/Dropbox/src/bloggart
+echo 'deploy: app dir is: '$app >[1=2]
 
 head=`{cat $app/.git/refs/heads/onideas}
+echo 'deploy: git heads/onideas version is: '$head >[1=2]
 
 sed -i 's/^version: .*/version: '$head'/' $app/app.yaml
 
