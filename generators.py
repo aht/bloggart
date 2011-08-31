@@ -71,7 +71,7 @@ class PostContentGenerator(ContentGenerator):
 
   @classmethod
   def get_etag(cls, post):
-    return post.hash
+    return post.summary_hash
 
   @classmethod
   def get_prev_next(cls, post):
