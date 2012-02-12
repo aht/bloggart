@@ -244,6 +244,44 @@ code {
 	font-family: Inconsolata, monospace;
 }
 
+
+/* start - table */
+table {
+	border-collapse: collapse;
+	margin: 10px;
+}
+th, td {
+	text-align: left;
+	vertical-align: top;
+}
+th {
+	padding: .8em, 1em;
+}
+td {
+	padding: .7em, 1em;
+}
+
+/* form elements */
+form p {
+	padding: 12px 0 5px 0;	margin: 0;
+}
+label {
+	font-weight: bold;
+}
+input, select, textarea {
+	margin: 5px 0;
+	padding: 5px;
+}
+input.button {
+	height: 30px;
+	margin: 0;
+	padding: 2px 3px;
+}
+#name, #email, #message, #website {
+	width: 380px;
+}
+
+
 .haiku {
 	white-space: pre;
 	font: 24px/1.5 "Comic Sans MS", cursive;
