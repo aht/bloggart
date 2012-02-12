@@ -6,7 +6,7 @@ import sys
 
 ## Application specific
 SDK_DIR = os.environ.get('GAE', '/usr/local/google_appengine')
-APP_DIR = os.path.expanduser('~/Dropbox/src/bloggart')
+APP_DIR = os.path.expanduser('~/src/bloggart')
 APP_ID = 'chickamade'
 EMAIL = 'anh.hai.trinh@gmail.com'
 
