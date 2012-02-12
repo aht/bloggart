@@ -1,6 +1,6 @@
 #!/usr/bin/env rc
 
-app=$home/Dropbox/src/bloggart
+app=$home/src/bloggart
 echo 'deploy: app dir is: '$app >[1=2]
 
 head=`{cat $app/.git/refs/heads/onideas}
@@ -17,6 +17,6 @@ fn sigexit sigint sigterm {
 	git checkout onideas
 } || exit 1
 
-/usr/local/google_appengine/appcfg.py -e anh.hai.trinh@gmail.com update $app \
+appcfg.py -e anh.hai.trinh@gmail.com update $app \
 	&& $app/script/post_deploy -v $head \
 	|| exit 1
